@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "SukiLedger - Tindahan Utang Manager",
+  "name": "SukiLedger - Store Debt Manager",
   "short_name": "SukiLedger",
-  "description": "Offline na talaan ng pautang para sa tindahan.",
+  "description": "A simple store ledger for tracking customer debts and payments.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
