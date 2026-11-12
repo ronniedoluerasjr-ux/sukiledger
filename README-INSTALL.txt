@@ -1,51 +1,47 @@
 # SukiLedger 2.0 — Multi-User Cloud Edition
 
-SukiLedger is a store ledger for managing customer records, debts, payments, and reports. Each account has private cloud records protected by Supabase Row Level Security (RLS).
+Separate email/password accounts with private cloud records. Supabase Row Level Security (RLS)
+restricts each account to its own user_id.
 
-## Important Before Updating an Existing Deployment
+## Important
+This ZIP is prepared for Supabase but is NOT connected to a live database yet. Complete the
+one-time setup below before using it with real records.
 
-This package is intended as a front-end language and branding update. If you already have a working SukiLedger deployment connected to Supabase:
+## A. Create the cloud database
+1. Open https://supabase.com and create a free account and project.
+2. In Supabase, open SQL Editor → New query.
+3. Copy all of `SUPABASE-SETUP.sql` into the editor and click Run.
+4. Open Project Settings → API (or API Keys). Copy the Project URL and anon/public key.
 
-- Do not run `SUPABASE-SETUP.sql` again.
-- Do not replace your existing Supabase project.
-- Keep your current `config.js` values. The configuration file in this archive may contain setup placeholders.
-- Do not change your existing database tables, records, or RLS policies.
-- Back up your records before deploying any update.
+## B. Connect the app
+1. Open `config.js` in a text editor.
+2. Replace PASTE_YOUR_SUPABASE_PROJECT_URL_HERE with the Project URL.
+3. Replace PASTE_YOUR_SUPABASE_ANON_KEY_HERE with the anon/public key.
+4. Save. NEVER put the service_role key in config.js.
 
-## Supabase Configuration
+## C. Email confirmation
+Supabase may require email confirmation before a new account can log in. Keeping confirmation
+enabled is safer for a public app. Configure allowed redirect URLs under Authentication → URL
+Configuration after publishing your app.
 
-The app uses the following browser-side settings in `config.js`:
+## D. Publish and install
+1. Upload every file/folder in this ZIP to a GitHub repository.
+2. Enable Settings → Pages → Deploy from a branch → main → /(root).
+3. Open the HTTPS GitHub Pages URL and test account creation/login.
+4. Share that same URL with your friend. They create their own account and install from Chrome.
+5. Android: Chrome menu → Install app/Add to Home screen.
+   Windows: Chrome/Edge install icon or menu → Install SukiLedger.
 
-- Supabase Project URL
-- Supabase anon/public key (or publishable key supported by your setup)
+## Features
+- Separate accounts and private per-account records.
+- Cloud-saved customer, debt, payment, and store settings.
+- Same account on phone/laptop; records load after reinstall/login.
+- Existing ledger, payment, search, print, JSON backup/restore features.
+- Responsive PWA for Android and Windows.
 
-Never put a Supabase `service_role` key in a browser-accessible file. Do not share your keys publicly.
-
-If your current live app is already connected, copy the working `config.js` from your existing project into this package before deployment. Do not use the placeholder values.
-
-## Deploying the Update with Vercel and GitHub
-
-1. Back up your SukiLedger data using the app's **Download Backup** feature.
-2. Keep a copy of your current GitHub repository or create a separate update branch.
-3. Replace the front-end files with the revised files from this package.
-4. Preserve the actual working `config.js` from your current connected project.
-5. Do not execute `SUPABASE-SETUP.sql` and do not make database changes for this language update.
-6. Push the changes to a preview branch and check the Vercel Preview Deployment first.
-7. Test login, customer records, debt entries, payments, reports, backup, and cloud sync.
-8. Merge to the production branch only after the preview works as expected.
-
-## Included Features
-
-- Separate email/password accounts.
-- Private per-account cloud records.
-- Customer, debt, and payment management.
-- Search, transaction history, and customer ledger printing.
-- Reports and JSON backup/restore.
-- Responsive Progressive Web App (PWA) support.
-
-## Notes
-
-- Internet access is required for cloud synchronization.
-- Keep periodic JSON backups.
-- Test the preview deployment before publishing it to your live domain.
-- Keep the existing Supabase Row Level Security policies enabled.
+## Important limitations
+- Internet is required for cloud sync. Offline edits are not queued in this starter version.
+- Keep JSON backups as an extra precaution.
+- Test with two separate accounts before entering real customer information.
+- Do not weaken or remove the supplied Row Level Security policies.
+- Supabase free-plan limits and terms may change.

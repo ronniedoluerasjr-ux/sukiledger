@@ -1,3 +1,4 @@
+-- SukiLedger multi-user database setup (Supabase SQL Editor)
 create table if not exists public.sukiledger_data (
   user_id uuid primary key references auth.users(id) on delete cascade,
   data jsonb not null default '{"customers":[],"transactions":[],"settings":{"storeName":"","ownerName":"","storePhone":""}}'::jsonb,
