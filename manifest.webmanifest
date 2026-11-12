@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Eilleen's Booklet",
-  "short_name": "Eilleen's",
-  "description": "A digital customer credit ledger for your store.",
+  "name": "SukiLedger - Tindahan Utang Manager",
+  "short_name": "SukiLedger",
+  "description": "Offline na talaan ng pautang para sa tindahan.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
